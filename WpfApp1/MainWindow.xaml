@@ -4,8 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WpfApp1"
+    xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    Title="CTL Scale"
     Width="1280"
     Height="800"
     MaxWidth="1280"
@@ -15,7 +16,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="120" />
             <RowDefinition />
-            <RowDefinition Height="20" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <Image
             Grid.RowSpan="2"
@@ -32,108 +33,425 @@
             Content="CTL Scale"
             FontFamily="Arial Rounded MT Bold"
             FontSize="72"
-            Foreground="#FF0046FF" />
-        <Rectangle
+            Foreground="#FF1239A0" />
+        <Grid
             Grid.Row="1"
-            Fill="#FFE4E4E4"
-            Stroke="Black" />
-        <GroupBox
+            Width="100"
+            Height="100"
+            Margin="383,244,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" />
+        <Grid
             Grid.Row="1"
-            Width="271"
+            Width="1252"
             Height="609"
             Margin="10,10,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="White"
-            FontFamily="Arial Rounded MT Bold"
-            FontSize="24"
-            FontWeight="Bold"
-            Header="Lot Order">
-            <Grid Background="White">
+            VerticalAlignment="Top" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="400" />
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="ComboBox1"
+                Width="180"
+                Margin="10,10,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold"
+                ToolTip="" Cursor="Hand" />
+            <ListBox
+                x:Name="ListBox_Scales"
+                Width="180"
+                Margin="10,40,0,249"
+                HorizontalAlignment="Left"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Foreground="#FF0B3E99">
+                <ListBoxItem Content="1. 23g" Foreground="#FF0B3E99" />
+                <ListBoxItem Content="2. 22g" Foreground="#FF0B3E99" />
+                <ListBoxItem Content="3. 23g" Foreground="#FF0B3E99" />
+            </ListBox>
+            <Grid
+                Width="180"
+                Height="226"
+                Margin="10,365,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="80" />
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
-                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <TextBox
-                    Width="189"
-                    Height="30"
-                    Margin="0"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontSize="12"
-                    Text="TextBox"
-                    TextWrapping="Wrap" VerticalContentAlignment="Center" />
-                <Button
-                    Grid.Column="1"
-                    Width="30"
-                    Height="30"
-                    Margin="10,10,0,0"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Content="OK"
-                    FontSize="12" Padding="0" />
-                <Grid
+                <Label
                     Grid.Row="1"
-                    Grid.ColumnSpan="2"
-                    Width="239"
-                    Height="504"
-                    Margin="10,10,0,0"
+                    Margin="0"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Background="White" ShowGridLines="True" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="50"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Label Content="No." HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14"/>
-                    <Label Content="1" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Row="1"/>
-                    <Label Content="2" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Row="2"/>
-                    <Label Content="3" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Row="3"/>
-                    <Label Content="4" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Row="4"/>
-                    <Label Content="5" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Row="5"/>
-                    <Label Content="Weight" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="1"/>
-                    <Label Content="123" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="1" Grid.Row="1"/>
-                    <Label Content="123" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="1" Grid.Row="2"/>
-                    <Label Content="123" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="1" Grid.Row="3"/>
-                    <Label Content="123" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="1" Grid.Row="4"/>
-                    <Label Content="123" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="1" Grid.Row="5"/>
-                    <Label Content="Unit" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="2" Padding="0"/>
-                    <Label Content="g" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="2" Grid.Row="1" Padding="0"/>
-                    <Label Content="g" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="2" Grid.Row="2" Padding="0"/>
-                    <Label Content="g" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="2" Grid.Row="3" Padding="0"/>
-                    <Label Content="g" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="2" Grid.Row="4" Padding="0"/>
-                    <Label Content="g" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" FontSize="14" Grid.Column="2" Grid.Row="5" Padding="0"/>
-                </Grid>
+                    VerticalAlignment="Center"
+                    Content="Min"
+                    FontFamily="Arial Rounded MT Bold"
+                    FontSize="16"
+                    FontWeight="Bold" Foreground="#FF0B3E99" />
+                <Label
+                    Grid.Row="2"
+                    Margin="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="Max"
+                    FontFamily="Arial Rounded MT Bold"
+                    FontSize="16"
+                    FontWeight="Bold" Foreground="#FF0B3E99" />
+                <Label
+                    Margin="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="Times"
+                    FontFamily="Arial Rounded MT Bold"
+                    FontSize="16"
+                    FontWeight="Bold" Foreground="#FF0B3E99" />
+                <Label
+                    Grid.Row="3"
+                    Margin="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Content="Average"
+                    FontFamily="Arial Rounded MT Bold"
+                    FontSize="16"
+                    FontWeight="Bold" Foreground="#FF0B3E99" />
+                <Label
+                    x:Name="Label_Times"
+                    Grid.Column="1"
+                    Margin="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Content="times"
+                    FontFamily="Arial Rounded MT Bold"
+                    FontSize="16" Foreground="#FF0B3E99" />
+                <Label
+                    x:Name="Label_Min"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Content="min"
+                    FontFamily="Arial Rounded MT Bold"
+                    FontSize="16" Foreground="#FF0B3E99" />
+                <Label
+                    x:Name="Label_Max"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Content="max"
+                    FontFamily="Arial Rounded MT Bold"
+                    FontSize="16" Foreground="#FF0B3E99" />
+                <Label
+                    x:Name="Label_Average"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Margin="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Content="average"
+                    FontFamily="Arial Rounded MT Bold"
+                    FontSize="16" Foreground="#FF0B3E99" />
             </Grid>
-        </GroupBox>
-        <GroupBox
-            Grid.Row="1"
-            Width="976"
-            Height="609"
-            Margin="286,10,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="White"
+            <TextBox x:Name="TextBoxLotID"
+                Grid.Column="1"
+                Width="216"
+                Height="25"
+                Margin="10,10,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Center"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold"
+                Text="Please Key Lot ID"
+                TextWrapping="Wrap" GotFocus="TextBoxLotID_GotFocus" />
+            <Button x:Name="ButtonAddLotID"
+                Grid.Column="1"
+                Width="75"
+                Height="25"
+                Margin="231,10,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Add" Background="#FFB8FFC8" FontWeight="Bold" FontSize="16" FontFamily="Arial Rounded MT Bold" BorderBrush="{x:Null}" Click="Button_Click_6" Cursor="Hand" />
+            <Label x:Name="Label_LotID2"
+                Grid.Column="2"
+                Margin="10,10,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Lot ID:"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <ListBox x:Name="ListBoxData"
+                Grid.Column="2"
+                Width="380"
+                Height="492"
+                Margin="10,44,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" FontFamily="Arial Rouonde" FontSize="16" FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Button
+                Grid.Column="2"
+                Width="120"
+                Height="50"
+                Margin="10,541,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="#FFCAFFCF"
+                BorderBrush="{x:Null}"
+                Content="Finish"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Click="Button_Click_3" Cursor="Hand" />
+            <Button
+                Grid.Column="2"
+                Width="120"
+                Height="50"
+                Margin="135,541,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="#FFFFAFAF"
+                BorderBrush="{x:Null}"
+                Content="Clear Data"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Click="Button_Click_4" Cursor="Hand" />
+            <Button
+                Grid.Column="2"
+                Width="130"
+                Height="50"
+                Margin="260,541,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="#FFFFA9A9"
+                BorderBrush="{x:Null}"
+                Content="Cancel Lot"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Click="Button_Click_5" Cursor="Hand" />
+            <Label
+                Grid.Column="1"
+                Width="216"
+                Margin="10,115,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="No :"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="48"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <ProgressBar x:Name="ProgressBar1"
+                Grid.Column="1"
+                Width="632"
+                Height="50"
+                Margin="10,441,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Foreground="#FF060EB0"
+                Maximum="6000"
+                Value="3000" />
+            <Label
+                Grid.Column="1"
+                Width="216"
+                Margin="10,328,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Weight :"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="48"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Label x:Name="Label_Weight"
+                Grid.Column="1"
+                Width="401"
+                Margin="231,328,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Center"
+                Content="9999"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="48"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <ComboBox x:Name="ComboBoxUnit"
+                Grid.Column="1"
+                Width="200"
+                Height="66"
+                Margin="432,257,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Right"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="48"
+                FontWeight="Bold" Cursor="Hand">
+                <ComboBoxItem
+                    Width="247"
+                    HorizontalAlignment="Left"
+                    Content="g" />
+                <ComboBoxItem
+                    Width="247"
+                    HorizontalAlignment="Left"
+                    Content="kg" />
+            </ComboBox>
+            <Label x:Name="Label_No"
+                Grid.Column="1"
+                Width="401"
+                Margin="231,115,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Center"
+                Content="1"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="48"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Label
+                Grid.Column="1"
+                Width="216"
+                Margin="10,186,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Date :"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="48"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Label x:Name="Label_Date"
+                Grid.Column="1"
+                Width="401"
+                Margin="0,186,20,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Right"
+                Content="99/99/99"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="48"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Label
+                Grid.Column="1"
+                Width="216"
+                Margin="10,257,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Unit :"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="48"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Label
+                Grid.Column="1"
+                Width="216"
+                Margin="10,44,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="Lot ID :"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="48"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Label x:Name="Label_LotID"
+                Grid.Column="1"
+                Width="401"
+                Margin="231,44,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Right"
+                VerticalContentAlignment="Center"
+                Content="A999999"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="48"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Label
+                Grid.Column="1"
+                Width="77"
+                Margin="10,496,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="0"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Label
+                Grid.Column="1"
+                Width="85"
+                Margin="557,496,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Right"
+                Content="6000"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Label
+                Grid.Column="1"
+                Width="104"
+                Margin="279,496,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Center"
+                Content="3000"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Foreground="#FF0B3E99" />
+            <Button
+                Grid.Column="1"
+                Width="319"
+                Height="50"
+                Margin="10,541,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="#FFBCFFC6"
+                BorderBrush="{x:Null}"
+                Click="Button_Click_2"
+                Content="Zero"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Cursor="Hand" />
+            <Button
+                Grid.Column="1"
+                Width="308"
+                Height="50"
+                Margin="334,541,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Background="#FF8DCFF5"
+                BorderBrush="{x:Null}"
+                Click="Button_Click"
+                Content="Tare"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Cursor="Hand" />
+            <Button
+                Margin="10,541,10,18"
+                Background="#FFB8FFC8"
+                BorderBrush="{x:Null}"
+                Click="Button_Click_1"
+                Content="Report"
+                FontFamily="Arial Rounded MT Bold"
+                FontSize="16"
+                FontWeight="Bold" Cursor="Hand" />
+        </Grid>
+        <Label
+            Grid.Row="2"
+            Margin="0,0,5,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Content="copyright © Contrologic 2021 All Rights Reserved"
             FontFamily="Arial Rounded MT Bold"
-            FontSize="24"
             FontWeight="Bold"
-            Header="Scale" >
-            <ProgressBar HorizontalAlignment="Left" Height="560" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Orientation="Vertical" Value="15"/>
-        </GroupBox>
+            Foreground="#FFA2A2A2" />
+        <Label x:Name="LabelStatus" Content="Status:" HorizontalAlignment="Left" Margin="0" Grid.Row="2" VerticalAlignment="Center" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Foreground="#FF9B9B9B"/>
+        <Button x:Name="ButtonCreateDB" Content="Create Database" HorizontalAlignment="Left" Margin="802,10,0,0" VerticalAlignment="Top" Width="150" Height="100" BorderBrush="{x:Null}" FontSize="16" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Background="#FFCEFFCC" Click="ButtonCreateDB_Click" Cursor="Hand"/>
+        <Button x:Name="ButtonCreateTable" Content="Create Table" HorizontalAlignment="Left" Margin="957,10,0,0" VerticalAlignment="Top" Width="150" Height="100" BorderBrush="{x:Null}" FontFamily="Arial Rounded MT Bold" FontSize="16" FontWeight="Bold" Background="#FFCEFFCC" Click="ButtonCreateTable_Click" Cursor="Hand"/>
+        <Button x:Name="buttonCheckDB" Content="Check Connection" HorizontalAlignment="Left" Margin="1112,10,0,0" VerticalAlignment="Top" Width="150" Height="100" BorderBrush="{x:Null}" FontFamily="Arial Rounded MT Bold" FontSize="16" FontWeight="Bold" Background="#FF89C4FF" Click="buttonCheckDB_Click" Cursor="Hand"/>
 
     </Grid>
 </Window>
