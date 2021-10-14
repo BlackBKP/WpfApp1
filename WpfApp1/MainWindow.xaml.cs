@@ -12,15 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SQLite;
+using System.IO.Ports;
+using System.Threading;
 
 namespace WpfApp1
 {
     public partial class MainWindow : Window
     {
+        SerialPort Serial;
+        private delegate void SetText(string text);
+        DatabaseService Database = new DatabaseService();
+
         public MainWindow()
         {
             InitializeComponent();
             PrepareForm();
+            SQLiteConnection Connect = Database.Connect();
+            Database.CreateTable(Connect);
             List<int> datas = new List<int>();
             for (int i = 0;i < ListBox_Scales.Items.Count; i++)
             {
@@ -54,9 +63,36 @@ namespace WpfApp1
             Label_Weight.Content = "0000";
             ProgressBar1.Value = 0;
 
-
             Label_LotID2.Content = "Lot ID:";
             ListBoxData.Items.Clear();
+        }
+
+        public void SerialConnect()
+        {
+            Serial = new SerialPort("COM11", 9600, Parity.None, 8, StopBits.One);
+            Serial.Handshake = Handshake.None;
+            Serial.DataReceived += new SerialDataReceivedEventHandler(SerialRead);
+            Serial.WriteTimeout = 500;
+            Serial.Open();
+        }
+
+        private void SerialRead(object sender, SerialDataReceivedEventArgs e)
+        {
+            if (Serial.IsOpen)
+            {
+                Serial.Write("S\r\n");
+                Thread.Sleep(300);
+                string Message = Serial.ReadLine();
+                Dispatcher.BeginInvoke(new SetText(si_DataReceived), new object[] { Message });
+            }
+        }
+
+        private void si_DataReceived(string data)
+        {
+            if (data.Length > 0 && data.Trim() != "" && data.Trim() != "ZA")
+            {
+                Label_Weight.Content = data;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -117,6 +153,7 @@ namespace WpfApp1
                 Label_Weight.Content = "0000";
                 Label_LotID2.Content = "Lot ID: " + TextBoxLotID.Text;
                 ListBoxData.Items.Clear();
+                SerialConnect();
             }
         }
 
